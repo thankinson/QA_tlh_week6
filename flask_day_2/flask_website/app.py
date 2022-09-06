@@ -1,6 +1,6 @@
 from flask import Flask, request, redirect, url_for, render_template
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="templates", static_folder='static')
 
 @app.route('/')
 def home():
@@ -8,6 +8,7 @@ def home():
 
 @app.route('/index')
 def index():
+    url_for('static', filename='css/main.css')
     return render_template('index.html')
 
 @app.route('/page2')
