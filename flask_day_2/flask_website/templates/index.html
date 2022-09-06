@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block title %} 
+<title>index</title>
+{% endblock title %}
+
+{% block body %}
+
+<h1>welcome to the home page</h1>
+<p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Vel, quaerat odio earum animi quisquam mollitia veniam sapiente 
+    beatae fugiat suscipit a qui ab tenetur voluptatum necessitatibus 
+    expedita nulla aspernatur cupiditate.
+</p>
+
+
+        {% if 3 == 4 %}
+
+        <h1>3 is equal to 4</h1>
+
+        {% else %}
+
+        <h1>3 is not equal to 4</h1>
+
+        {% endif %}
+
+<h2>for loop</h2>
+
+        {% for user in ["Ben", "Luke", "Harry"] %}
+
+        <p>{{ user }}</p>
+        
+        {% endfor %}
+    
+{% endblock body %}
