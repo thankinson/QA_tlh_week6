@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     {% block title %} {% endblock title %}
-    <link rel="stylsheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">
+    <!-- <link rel="stylsheet" type="text/css" href="../static/css/main.css" >  -->
+    <!-- <link rel="stylsheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}" > -->
+    {% block cssmain %} {% endblock cssmain %}
 </head>
 <body>
  {% block body %}

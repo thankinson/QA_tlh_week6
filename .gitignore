@@ -1,3 +1,8 @@
 ./flask day 1/__pyache__
+<<<<<<< HEAD
+flask_day_2/flask_app/venv
+flask_day_2/flask_website/venv
+=======
 flask_day_2/flask_app/venv/
 flask_day_2/flask_website/venv/
+>>>>>>> 2c776567ca2a323b719e910566355c860a9cb790
