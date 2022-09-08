@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask CRUD</title>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('add') }}">Add Game</a>
+        <a href="{{ url_for('read') }}">Read</a>       
+    </div>
+    {% block body_content %}{% endblock body_content %}
+</body>
+</html>

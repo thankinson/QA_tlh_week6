@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block body_content %}
+
+<form method="post" action="">
+<div class="form">
+        <div class="form-group">
+            {{ form.name.label }}
+            {{ form.name }}
+            {{ form.submit }}
+            
+        </div>
+
+    </form>
+</div>
+
+
+{% endblock body_content %}

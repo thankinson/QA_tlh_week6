@@ -7,4 +7,4 @@ class User(db.Model):
     dob = db.Column(db.DateTime(), nullable=False)
     favourite_number = db.Column(db.Float(), nullable=True)
     favourite_food = db.Column(db.String(3), default='MEX', nullable=False)
-
+    user_hobby = db.relationship('UserHobby', backref='user')
