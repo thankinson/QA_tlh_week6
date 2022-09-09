@@ -2,15 +2,16 @@
 
 {% block body_content %}
 
-<form method="post" action="">
+<form method="POST" action="">
+    {{ form.hidden_tag() }}
 <div class="form">
         <div class="form-group">
             {{ form.name.label }}
-            {{ form.name }}
+            {{ form.name(placeholder='Delete Game') }}
             {{ form.submit }}
             
         </div>
-
+            {{ message }}
     </form>
 </div>
 

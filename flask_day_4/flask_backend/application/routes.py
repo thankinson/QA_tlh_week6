@@ -1,15 +1,16 @@
 from flask import Flask, request, render_template
 from application import app, db
 from application.models import Games
-from application.forms import AddGamesForm
+from application.forms import AddGamesForm, DeleteGamesForm
 
+@app.route('/')
 @app.route('/add', methods=['GET', 'POST'])
 def add():
     message = ""
     add_game_form = AddGamesForm()
     if add_game_form.validate_on_submit():
         if request.method == 'POST':
-            new_game = Games(name=add_game_form.name.data)
+            new_game = Games(name=add_game_form.name.data.lower())
             db.session.add(new_game)
             db.session.commit()
             message = f'{add_game_form.name.data} added to database'
@@ -39,15 +40,17 @@ def count():
     count_all = Games.query.count()
     return f"There is {count_all} games in database"
 
-@app.route('/delete', methods=['GET','DELETE'])
+@app.route('/delete', methods=['GET','POST'])
 def delete():
-    # game_to_delete = Games.query.get_or_404(name)
-    # db.session.delete(game_to_delete)
-    # db.session.commit()
-    add_game_form = AddGamesForm()
-    first_game = Games.query.get_or_404(add_game_form.name.data)
-    db.session.delete(first_game.name)
-    db.session.commit()
-    # return f"{add_game_form.name} deleted"
-    return render_template('delete_game.html', form=add_game_form)
-    
+    message = ""
+    delete_game_form = DeleteGamesForm()
+    if request.method == 'POST':
+        if delete_game_form.validate_on_submit():
+            delete_game = Games.query.filter_by(name=delete_game_form.name.data.lower()).first()
+            db.session.delete(delete_game)
+            db.session.commit()
+            message = f"{delete_game.name.capitalize()}: Has been removed from database"
+        else:
+            message = "Error could not remove game"
+   
+    return render_template('delete_game.html', form=delete_game_form, message=message)
